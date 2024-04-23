@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap'); /* importation police oswald */
+
+body{
+    font-family: "oswald"; /* police oswald pour tout les textes du document */
+    background-color: #FDFDFD; /* fond de la page */
+    margin: 0; /* marge de base de la page à zero */ 
+    background: url(../IMG/backgroundCross.png); /* image de fond */
+}
+
+/*--------------------TITRE PAGE -----------------------*/
+h1{
+    color: #FDFDFD; /* couleur titre */
+    text-align: center; /* texte centré */
+    text-decoration: underline; /* textes souligné */
+    font-size: 90px; /* taille du texte */
+    margin: 100px 0; /* marge haute et basse */
+}
+
+/*--------------------GRILLE PRINCIPALE -----------------------*/
+.contentCalendar{
+    display: grid; /* grille */
+    grid-template-columns:1fr 1fr; /* divisé en 2 */
+    grid-template-areas: "n c1 n c2" /* patern de la grille*/
+                         "b b  b b";
+    margin: 0 100px 100px 100px; /* marge externe à gauche et à droite et basse */
+    background-color: rgba(27, 25, 38, 0.7); /* couleur de fond*/
+    border-radius: 5px; /* bords legerement arrondis */
+}
+
+/*--------------------CONTENU LIGNE -----------------------*/
+.contentRow{
+    position: relative; /* le grand logo se positionnera par rapport à lui */
+}
+
+/*--------------------SCHEMA CIRCUIT FOND GRILLE-----------------------*/
+.raceLogo{
+    position: absolute; /* Position absoluepour que le logo soit confondu à la grille */
+    height: 100%; /* hauteur prend toute la hauteur de la ligne*/
+    width: auto; /* largeur automatique pour evité les distoritions */
+    max-width: 100%; /* largeur max pour evité les debordements */
+    z-index: 0; /* Placer le logo en dessous du contenu qui est de z-index: 1 */
+    opacity: 0.2; /* opacité du logo */
+    left: 50%; /* Place l'élément au milieu horizontalement */
+    transform: translateX(-50%); /* Déplace l'élément de moitié de sa largeur vers la gauche pour le centrer */
+}
+
+/*--------------------GRILLE LIGNE-----------------------*/
+.row{
+    display: grid; /* grille */
+    grid-template-columns: 0.1fr 1fr;  /*divisé en 2. celui de droite est majoritaire */
+    margin: 25px; /* marge tout autour */
+    color: #FDFDFD; /* couleur texte*/
+}
+
+/*--------------------NUMERO DE CIRCUIT DEVANT LIGNE-----------------------*/
+.raceNum{
+    font-weight: bold; /*numero en gras */
+    font-size: 50px; /* taille du texte */
+    margin: 0; /* marge externe supprimé */
+    display: flex; /*  display flex pour centrer les elements verticalement*/
+    align-items: center; /* centrer les elements verticalement */
+    color: #FDFDFD; /* couleur numero de course */
+}
+
+.colorActu{
+    color: rgb(158, 1, 1); /* couleur numero de course */
+}
+
+.colorPassed{
+    color: black; /* couleur numero de course */
+}
+.boldHunder{
+    font-weight: bold; /* texte en gras */
+    text-decoration-line: underline; /* texte souligné */
+    
+}
+
+/*--------------------CONTENU FLAG NOMCIRCUIT DATECITCUIT-----------------------*/
+.race{
+    z-index: 1; /* au dessus du schema circuit */
+    display: grid; /* grille */
+    grid-template-columns: 1fr 3fr 1fr; /* drapeau prend 1/5, nomCircuit prend 3/5, date prend 1/5 */
+    overflow: hidden; /* ce qui depasse est invisible, exemple les background au niveau du border radius */
+    align-items: center; /* les centrer verticalement*/
+    max-height: 100%; /* la hauteur de la grille comprenant flag raceName et raceDate ne pourra depasser la div race */
+    border-top: #FDFDFD 10px solid; /* bordure du top */
+    border-right: #FDFDFD 10px solid; /* bordure à droite */
+    border-top-right-radius: 40px; /* bord arrondi */
+}
+
+/*--------------------DRAPEAU-----------------------*/
+.flag{
+    max-width: 100%; /* taille du drapeau max en largeur et hauteur pour qu'il soit responsive mais ne devient pas disproportionné*/
+    max-height: 80%;
+}
+
+/*--------------------NOMCIRCUIT-----------------------*/
+.raceName{
+    font-size: 40px; /* taille du texte */
+    margin: 0; /* marge externe suprimé */
+    text-align: center; /* centré */ 
+    font-style: italic; /* texte en italic */
+}
+
+/*--------------------CONTENU DATECIRCUIT-----------------------*/
+.raceDate{
+    display: flex; /* display flex */
+    align-items: center; /*centre verticalement */
+    background-color: rgb(158, 1, 1); /* background de la date*/
+    height: 100%; /* prend toute la hauteur de la grille*/
+}
+
+/*--------------------TXT DATECIRCUIT-----------------------*/
+.raceDate p{
+    margin: 0; /* marge externe suprimé */
+    font-size: 40px; /* taille texte */
+    padding: 0 35px; /* padding gauche droite*/
+}
+
+/*--------------------LIGNE DU DESSOUS-----------------------*/
+hr{
+    grid-column: span 2; /* associe deux colonnes */
+    width: 100%; /* prend toute la largeur de la grille */
+    height: 3px; /* hauteur de 3px*/
+    margin: 0; /* marge externe enlevé */
+    background-color: #FDFDFD; /* couleur de fond */
+    border: none; /* bord naturels retiré */
+}
+
+/*____________________________________________________ */
+/*--------------------RESPONSIVE-----------------------*/
+/*____________________________________________________ */
+@media screen and (max-width : 1300px){ /* lorsque la largeur de la page est inferieur à 1300px faire : */
+    .contentCalendar{
+        grid-template-columns: 1fr; /* une colonne */
+    }
+}

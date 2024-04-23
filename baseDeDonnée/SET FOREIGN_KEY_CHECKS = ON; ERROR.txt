@@ -1,0 +1,13 @@
+Goto XAMPP control panel>
+Stop Apache and MySql services>
+
+Click on Config of Apache>select php.ini and change the followings:
+max_execution_time = 600
+max_input_time = 600
+memory_limit = 1024M
+post_max_size = 1024M
+
+Click on Config button of MySql and select my.ini and change:
+max_allowed_packet = 1024M
+
+Again Start the services and try.. i hope it will work.

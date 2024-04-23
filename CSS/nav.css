@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap'); /* importation police oswald */
+*{
+    margin: 0; /* supprime marges naturelle de la page */
+    padding: 0;
+    box-sizing: border-box; /* empeche les element de sortir de l'ecran */
+}
+
+body{
+    font-family: "oswald"; /* police oswald pour tout les textes du document */
+}
+/*------------------------CONTENT NAV BAR-------------------------*/
+.header{
+    position: relative; /* les element utilisent la barre comme reference */
+    width: 100%; /* la barre prend toute la largeur de la page */
+    display: flex; /* flexibilité pour l'espacement entre element*/
+    justify-content: space-between; /* espacement entre element */
+    align-items: center; /* les elements sont centré verticalement */
+    background-color: #C0C0C0; /* couleur fond  */
+    padding: 0 25px; /* marge interne en haut et en bas des elements */
+    transition: 0.3s; /* duree transition lorsque la barre change de taille d'hauteur */ 
+
+}
+
+/*------------------------CONTENT LOGO-------------------------*/
+.logo a{
+    display: block; /* block occupe toute le content parent*/
+    width: 150px; /* taille du content */
+}
+
+.logo a img{
+    display: block; /* block occupe toute le content parent */
+    width: 100%; /* occupe toute la largeur du content logo a */
+}
+
+/*------------------------CONTENT NAVIGATION-------------------------*/
+.navigation {
+    display: flex; /* flexibilité pour l'espacement entre element notament le logo hamburger*/
+    justify-content: space-between; /* espacement entre element */
+    align-items: center; /* les elements sont centré verticalement */
+}
+
+/*-----------------------------BOUTON CHEKBOX----------------------- */
+.toggle-menu {
+    position: absolute; /* postion pour pouvoir le superposer au logo */
+    width: 30px; /* largeur egale à la largeur des ligne */
+    height: 100%; /* hauteur par consequent de 30px */
+    z-index: 4; /* se place au dessus des element qui n'ont pas de z-index ou un z-index inferieur à 4 */
+    cursor: pointer; /* la souris se change en pointeur */
+    opacity: 0;  /* ne pas voir le check box */
+}
+
+/*------------------------LOGO HAMBURGER-------------------------*/
+.hamburger {  /* ligne du milieu du burger */
+    position: relative; /* la div est utilisé comme reference */
+    width: 30px; /* largeur de 30px */
+    height: 4px; /* hauteur de 4px */
+    background-color: #fff; /* couleur logo */
+    border-radius: 10px; /* bord rond a gauche et à droite */
+    cursor: pointer; /* lorsque que la souris passe dessus elle devient un pointeur */
+    z-index: 3; /* se place au dessus des element qui n'ont pas de z-index ou un z-index inferieur à 3 */
+    transition: 0.3s; /* duree transition hamburger <-> croix */
+}
+/* ligne du haut */  /* ligne du bas */
+.hamburger::before, .hamburger::after {
+    content: ""; /* contenu vide qui sera une ligne avec la couleur etc */
+    position: absolute; /* pour pouvoir en faire ce que l'on veut */
+    height: 4px; /* hauteur de la linge */
+    width: 30px; /* largeur de la ligne */
+    right: 0; /* collé à droite de la div*/
+    background-color: #fff; /* couleur de la ligne*/
+    border-radius: 10px; /* bord arrondi */
+    transition: 0.3s; /* duree transition hamburger <-> croix */
+}
+
+.hamburger::before {   /* ligne du haut */
+    top: -10px; /* position par rapport à la ligne du milieu */
+}
+
+.hamburger::after {  /* ligne du bas */
+    top: 10px; /* position par rapport à la ligne du milieu */
+}
+
+
+.hamburger, .toggle-menu {  
+    display: none; /* ne pas afficher le hamburgere ni le bouton check box*/
+}
+
+
+
+/*------------------------MENU LISTE D'ELEMENT-------------------------*/
+.menu{
+    display: flex; /* flexibilité */
+    justify-content: center; /* centre les textes dans leur content*/
+    flex-direction: row; /* les content des texte sont placé en ligne*/
+    align-items: center; /* textes centré verticalement */
+    z-index: 2;  /* se place au dessus des element qui n'ont pas de z-index */
+    transition: 0.5s; /* duree transition apparition menu de droite à gauche */
+
+}
+
+.menu li {
+    list-style-type: none; /* n'affiche pas de puce */
+}
+
+.menu li a {
+    font-weight: bold; /* met en gras le texte */
+    color: red; /* texte en rouge */
+    text-decoration: none; /* supprime les surlignement*/
+    display: block; /* block occupe toute le content parent*/
+    font-size: 26px; /* taille du texte */
+    line-height: 1; /* hauteur de ligne (pour compensser le hover) */
+    transition: 0.3s; /* duree transition lorsqu'on survole les elt du menu */
+}
+
+/* padding à l'ecart car le logo ne doit pas en avoir*/
+.pad{
+    padding: 40px 25px; /* 40px en haut et en bas et 25 gauche et droite */
+}
+
+/* padding du logo account */
+.logoPad{
+    padding: 0 5px ;
+}
+/* hover uniquement pour le texte pas le logo */
+.pad:hover{
+    box-shadow: 0 -5px 0px red inset,  /* ombre qui est un soulignement  */
+    500px 0 0 rgba(255,255,255,0.04) inset; 
+    padding: 35px 25px 45px 25px; /* decale le texte lors du hover */
+}
+
+.imgAccount{
+    height: 50px;
+    padding: 0 20px;
+    cursor: pointer;
+}
+
+
+
+
+
+/*-----------------BONTON CHECKBOX CHECKED-------------------*/
+/* Quand le nouton checkbox est sur "CHECKED" faire : */
+.navigation input:checked ~ .hamburger {
+    background-color: transparent; /* la checkBox est invisible */
+}
+
+/* Quand le nouton checkbox est sur "CHECKED" faire : */
+.navigation input:checked ~ .hamburger:before {
+    top: 0; /* collé en haut de la div */
+    transform: rotate(-45deg); /* fait une rotation de la ligne haute pour creer la croix */
+}
+
+/* Quand le bouton checkbox est sur "CHECKED" faire : */
+.navigation input:checked ~ .hamburger:after {
+    top: 0; /* collé en haut de la div */
+    transform: rotate(45deg); /* fait une rotation de la ligne haute pou creer la croix */  
+}
+
+/* Quand le bouton checkbxc est sur "CHECKED" faire : */
+.navigation input:checked ~ .menu{
+    right: 0px; /* affiche le menu qui etait caché à droite */
+}
+
+/*____________________________________________________ */
+/*--------------------RESPONSIVE-----------------------*/
+/*____________________________________________________ */
+@media screen and (max-width : 1300px) { /* quand la page fait moins de 1300px de largeur */
+    .hamburger, .toggle-menu {  /* afficher le hamburger */
+        display: block; /* block occupe toute le content parent*/
+    }
+
+    .header {
+        padding: 10px 20px; /* reduit hauteur de la barre */
+    }
+
+    .menu{  /* afficher les valeurs du menu en colonne */
+        justify-content: start; /* affiche tout les element à gauche */
+        flex-direction: column; /* affiche les elements en colonne*/
+        align-items: center; /* centre les elements verticalement */
+        position: fixed; /* fixe le menu, lorsque l'on defile */
+        top: 0; /* le menu est collé en haut de l'ecran*/
+        right: -300px; /* -(width) pour le faire disparaitre à droite */
+        background-color: #C0C0C0; /*couleur de fond */
+        width: 300px;  /* taille en largeur du menu */
+        height: 100%; /* menu jusqu'en bas de page */
+        padding-top: 65px; /* se decale de la hauteur de la barre */
+    }
+
+    .menu li {
+        width: 100%; /* prendre la totalité de la largeur du menu*/
+    }
+
+    .menu li a {
+        padding: 30px; /* marge autours des elements*/
+        font-size: 24px; /* taille du texte*/
+        box-shadow: 0 1px 0px rgba(255,255,255,0.04) inset; /* ombre en forme de soulignement*/
+    }
+
+    .imgAccount{
+        padding-left: 0; /* colle le logo à gauche */
+    }
+}

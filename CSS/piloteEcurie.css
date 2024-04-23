@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap'); /* importation police oswald */
+
+body{
+    font-family: "oswald"; /* police oswald pour tout les textes du document */
+    margin: 0; /* marge de base de la page à zero */
+    background: url(../IMG/backgroundCross.png); /* image de fond */
+}
+
+/*--------------------TITRE PAGE -----------------------*/
+h1{
+    color: #FDFDFD; /* couleur texte*/
+    text-align: center; /* texte centré */
+    text-decoration: underline; /* textes souligné */
+    font-size: 90px; /* taille du texte */
+    margin: 100px 0; /* marge haute et basse */
+}
+
+/*--------------------GRAND LOGO-----------------------*/
+.bigLogo{
+    position: absolute; /* Position absoluepour que le logo soit confondu à la grille */
+    height: auto; /* hauteur automatique pour eviter la distortion de l'image et le depassement hors de la page*/
+    width: 100%; /* Prendre toute la largeur de la grille */
+    z-index: -1; /* Placer le logo au-dessus du contenu qui est de z-index: 0 */
+    opacity: 0.1; /* opacité du logo */
+    left: 50%; /* Place l'élément au milieu horizontalement */
+    transform: translateX(-50%); /* Déplace l'élément de moitié de sa largeur vers la gauche pour le centrer */
+}
+
+/*--------------------GRILLE-----------------------*/
+.contentEcurie{
+    position: relative; /* les éléments utilisent la grille comme référence (utile pour bigLogo)*/
+    display: grid; /* grille */
+    grid-template-columns: 2fr 1fr 1fr ; /* colonnes divisées en 1/2 1/4 1/4 */
+    grid-template-areas:"t t  t"     /* patern grille */
+                        "f p p";
+    margin: 0 50px 0 50px;  /* marge externe gauche et droite */
+    padding: 50px;  /* marge interne du content */
+    overflow: hidden; /* Masquer la partie du contenu qui sort de la div */
+}
+
+/*________initialisation des parties de la grille_________ */
+#t{grid-area: t;} 
+#f{grid-area: f;
+    position: relative;} /* la coupeCar se positionne par rapport à cette div*/
+
+/*--------------------TITRE CONTENU-----------------------*/
+.titreEcurie{
+    display: flex; /* aligner le titre et le logo sur la meme ligne */
+    align-items: center; /* aligner horizontalement */
+}
+.minLogoTitle{
+    width: 150px;  /* largeur auto pour eviter la distortion */
+    height: auto; /* hauteur de 50px */
+    margin-left: 20px; /* espacement avec le titre */
+}
+h2{  
+    color: #FDFDFD; /* couleur texte*/
+    font-size: 75px; /* taille texte */
+    text-decoration: underline; /* titre souligné */
+    text-decoration-thickness: 5px; /* épaisseur du soulignement */
+}
+
+/*--------------------CAR-----------------------*/
+.imgCar{
+    border-radius: 10px;  /* bord arrondi de l'image Car */
+    width: 100%; /* image prend toute la largeur de sa colonne */
+}
+
+/*--------------------COUPE CAR-----------------------*/
+.numCopaCar{
+    top: 10; /* le duo est a 10px du haut de l'image car */
+    left: 5; /* "   "   "  "  5px de la gauche de l'img car*/
+    position: absolute; /* etre sur l'img car */
+    font-size: 70px; /* taille du chiffre */
+    width: 70%; /* taille du duo en fonction de l'img car */
+    font-weight: bold; /* numéro en gras */
+}
+.numCopaCar p{
+    margin: 0; /* marge de la balise p supprimé */
+    color: #ffc403; /* couleur numero coupe (meme couleur que la coupe) */
+}
+.numCopaCar p img{
+    width: 10%; /* taille image coupe */
+}
+
+/*--------------------FIGURE PILOTE-----------------------*/
+.pilote{
+    border: solid black 1px;  /* bordure image */
+    margin: 0 30px 0 30px;  /* espace gauche et droite des images pilotes */ 
+    background: linear-gradient(to right, #000000, #2b3150); /* degradé background pilote */
+}
+
+/*--------------------COUPE PILOTE-----------------------*/
+
+.piloteCopa{
+    position: relative; /* le drapeau utilise l'image comme reference */
+}
+.copaNum{
+    position: absolute; /* la coupe et le numero sont deplaçable sur la photo  */
+    font-size: 30px; /* taille du texte */
+}
+.copaNum p{
+    margin: 0; /* supprime les marges */
+    padding: 10px 0 0 5px; /* marge haut et gauche */
+    color: #ffc403; /* couleur numero coupe (meme couleur que la coupe) */
+}
+.copaNum p img{
+    width: 15%; /* taille img coupe */
+}
+
+/*--------------------PILOTE-----------------------*/
+.imgPilote{
+    width: 100%;  /* L'image prend toute la largeur de la colone de la grille */   
+    border-bottom-left-radius: 100px;   /* bord bas gauche arrondi */
+    border-top-right-radius: 100px;    /* bord haut droite arrondi */
+}
+
+/*--------------------LEGENDE PILOTE-----------------------*/
+.legendPilote{
+    color: azure; /* couleur texte */
+    display: flex; /* flexible pour le gap */
+    justify-content: space-between; /* espace entre num_copaPilote et nomPilote */
+    font-size: 25px; /* taille du texte */
+    padding: 5px 0 5px 0; /* marge interne en haut et en bas */
+}
+.legendPilote p{
+    display: flex; /* flexible pour le mettre à gauche de la legende */
+    float: left; /* le nom est situé à gauche */
+    margin: 0; /* supprime les marges */
+    padding-left: 20px; /* marge à gauche */
+}
+.legendPilote img{
+    padding: 0 15px 0 15px; /* marge à gauche et à droite */
+    height: 95%;  /* le drapeau fait 95% de la hauteur de la legende */
+    max-width: 100px; /* largeur max de 100pxpx pour évité la distortion quand la hauteur de la legende est augmenté */
+}
+
+/*--------------------LIGNE-----------------------*/
+hr{
+    border: 1px solid #131522; /* Épaisseur et couleur de la ligne */
+    margin: 20px 150px 20px 150px ; /* Marge autour de la ligne */
+}
+
+/*____________________________________________________ */
+/*--------------------RESPONSIVE-----------------------*/
+/*____________________________________________________ */
+
+@media screen and (max-width : 1300px){ /* lorsque la largeur de la page est inferieur à 1300px faire : */
+    .contentEcurie{
+        grid-template-columns: 1fr 1fr ; /* colonne 1/2 1/2 */
+        grid-template-areas:"t  t " /* organisation aires*/
+                            "f  f"
+                            "p p";
+    }
+
+    .bigLogo{
+        bottom: 0; /* collé en bas de la div contenuEcurie*/
+        width: 100%; /* en fonction de la largeur */
+        height: auto; /* hauteur automatique pour évité la distorsion */
+        
+    }
+
+    .contentPilote{
+        margin-top: 50px; /* marge en haute pour que l'image Car ne les colles pas */
+    }
+
+    .titreEcurie{  
+        margin-left: auto;  /* div titre et logo centré */
+        margin-right: auto;
+    }
+
+}
